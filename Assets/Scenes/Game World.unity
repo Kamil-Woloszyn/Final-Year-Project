@@ -1946,6 +1946,7 @@ GameObject:
   - component: {fileID: 2122155781}
   - component: {fileID: 2122155779}
   - component: {fileID: 2122155777}
+  - component: {fileID: 2122155782}
   m_Layer: 0
   m_Name: MapGeneration Manager
   m_TagString: Untagged
@@ -2018,19 +2019,19 @@ MonoBehaviour:
   width: 200
   height: 200
   seed: sada
-  useRandomSeed: 1
+  useRandomSeed: 0
   randomFillPercent: 56
-  biomeCount: 2
+  biomeCount: 6
   smoothingIterations: 3
   maxPlotCountPerBiome: 35
   createBordersBetweenBiomes: 1
   similarityCutOff: 0
   expandMapBySize: 100
-  createStructures: 0
-  pathsBetweenStructures: 0
-  structuresToGenerate: 0
-  minDistBetweenStructures: 0
-  pathsFromEachStructure: 0
+  createStructures: 1
+  pathsBetweenStructures: 1
+  structuresToGenerate: 7
+  minDistBetweenStructures: 132
+  pathsFromEachStructure: 2
 --- !u!114 &2122155781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2041,5 +2042,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88f375bacd067d4b8b38c8c17704889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2122155782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122155776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76eb31482c946d40b58f453ae693e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
