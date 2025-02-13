@@ -40,6 +40,7 @@ public class PCG_Manager : MonoBehaviour
 
         createPathsButton = GameObject.FindGameObjectWithTag("CreatePaths").GetComponent<Button>();
         createPathsButton.onClick.AddListener(StructureGeneration.Instance.StartGenerationOfStructuresAndPaths);
+        
     }
 
     /// <summary>

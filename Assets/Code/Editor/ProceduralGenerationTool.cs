@@ -122,7 +122,8 @@ public class ProceduralGenerationToolEditorMode : EditorWindow
 
 public class ProceduralGenerationToolPlayMode : EditorWindow
 {
-    
+    //Variables for this window
+    GameObject newObject;
     //Editor Variables
     GUISkin skin;
     Texture2D headerTexture;
@@ -154,11 +155,24 @@ public class ProceduralGenerationToolPlayMode : EditorWindow
         GUILayout.Label("Procedural Generation Play Mode", skin.GetStyle("Header1"));
         GUILayout.Label("For use to create and set up the generation object (For Runtime Generation) \n", skin.GetStyle("Sub-Header1"));
 
-        
+        if (GameObject.FindAnyObjectByType<GenerationalValues>() != null) managerSpawnedInHirearchy = false;
 
         if (GUILayout.Button("Spawn Object"))
         {
+            if (!managerSpawnedInHirearchy)
+            {
+                //newObject = new GameObject();
+                //newObject.AddComponent<GenerationalValues>();
+                //newObject.AddComponent<PCG_Manager>();
+                //newObject.AddComponent<TileMapLinker>();
+                //newObject.AddComponent<CellularAutomata>();
+                //newObject.AddComponent<StructureGeneration>();
+                //newObject.name = "PCG_Map_Manager";
+                managerSpawnedInHirearchy = true;
+                
+            }
             managerSpawnedInHirearchy = true;
+           
         }
         if(managerSpawnedInHirearchy)
         {

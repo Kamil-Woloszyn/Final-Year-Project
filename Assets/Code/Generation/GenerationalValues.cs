@@ -31,74 +31,82 @@ public class ConditionalHideAttribute : PropertyAttribute
 /// </summary>
 public class GenerationalValues : MonoBehaviour
 {
-
-    
-
+    //Map Arrays
     private int[,] biomeMap;
+
+    private int[,] pathAndStructureMap;
 
     [Header("Global Generation Variables")]
     [SerializeField]
-    private int width;
+    public int width;
 
     [SerializeField]
-    private int height;
+    public int height;
 
     [SerializeField]
-    private string seed;
+    public string seed;
 
     [SerializeField]
-    private bool useRandomSeed;
+    public bool useRandomSeed;
 
     [Header("Biome Generation", order = 1)]
     [Range(30, 70)]
     [SerializeField]
-    private int randomFillPercent;
+    public int randomFillPercent;
 
     [Range(2, 10)]
     [SerializeField]
-    private int biomeCount;
+    public int biomeCount;
 
     [Range(0, 100)]
     [SerializeField]
-    private int smoothingIterations;
+    public int smoothingIterations;
 
     [Range(0, 100)]
     [SerializeField]
-    private int maxPlotCountPerBiome;
+    public int maxPlotCountPerBiome;
 
     [SerializeField]
-    private bool createBordersBetweenBiomes;
+    public bool createBordersBetweenBiomes;
 
     [SerializeField]
     [Range(3, 5)]
-    private int similarityCutOff;
+    public int similarityCutOff;
 
     [SerializeField]
-    private int expandMapBySize;
+    public int expandMapBySize;
 
 
     [Header("Path & Structure Generation", order = 1)]
     [SerializeField]
-    private bool createStructures = false;
+    public bool createStructures = false;
 
     [SerializeField]
-    private bool pathsBetweenStructures;
+    public bool pathsBetweenStructures;
 
     [SerializeField]
     [Range(2, 100)]
-    private int structuresToGenerate;
+    public int structuresToGenerate;
 
     [SerializeField]
     [Range(50, 500)]
-    private int minDistBetweenStructures;
+    public int minDistBetweenStructures;
+
+    [SerializeField]
+    public int addPatternsPerIteration;
+
+    [SerializeField]
+    public int maxPathsFromStartPoints;
+
+    [SerializeField]
+    public int iterationCount;
 
     [SerializeField]
     [Range(1, 2)]
-    private int pathsFromEachStructure;
-
-    private int[,] pathAndStructureMap;
+    public int pathsFromEachStructure;
 
 
+    [Header("Perlin Noise Generation")]
 
     private System.Random pseudoRandomGenerator;
 
@@ -280,6 +288,19 @@ public class GenerationalValues : MonoBehaviour
     /// <summary>
     ///  Getter Function
     /// </summary>
+    public int GetStructureIterationCount()
+    {
+        return iterationCount;
+    }
+
+    public int GetAddPatternsPerIteration()
+    {
+        return addPatternsPerIteration;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
     public System.Random GetSeededRandomizerObject()
     {
         return pseudoRandomGenerator;
@@ -431,5 +452,20 @@ public class GenerationalValues : MonoBehaviour
     public int RandomValueBetween(int min, int max)
     {
         return pseudoRandomGenerator.Next(min, max);
+    }
+
+    public void ChangeRandomizerSeed(string seed)
+    {
+        //Setting Up Random Generator
+        pseudoRandomGenerator = new System.Random(seed.GetHashCode());
+    }
+
+    public void ChangeRandomizerSeed()
+    {
+        //Initlaizing the randomizer dependant on the setting set
+        this.seed = Time.time.ToString();
+
+        //Setting Up Random Generator
+        pseudoRandomGenerator = new System.Random(this.seed.GetHashCode());
     }
 }

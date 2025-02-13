@@ -18,11 +18,11 @@ public class TileMapLinker : MonoBehaviour
     /// <summary>
     /// Singleton instance
     /// </summary>
-    public static TileMapLinker Instance {  get; private set; }
+    public static TileMapLinker Instance { get; private set; }
 
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -55,11 +55,39 @@ public class TileMapLinker : MonoBehaviour
         //Looping through 2D numerical map array
         for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
             {
                 tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[terrainMap[x, y]]);
             }
         }
+
+    }
+
+
+    public void SetUpTileMapForPaths(int[,] map)
+    {
         
+        int width = GenerationalValues.Instance.GetWidth();
+        int height = GenerationalValues.Instance.GetHeight();
+        int heightOffset = height / 2;
+        int widthOffset = width / 2;
+
+        //Looping through 2D numerical map array
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (map[x,y] != 0)
+                {
+                    tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[1]);
+                }
+                else
+                {
+                    tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[0]);
+                }
+                
+            }
+        }
+
     }
 }

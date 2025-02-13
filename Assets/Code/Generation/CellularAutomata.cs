@@ -81,6 +81,7 @@ public class CellularAutomata : MonoBehaviour
         seed = GenerationalValues.Instance.GetSeed();
         useRandomSeed = GenerationalValues.Instance.GetUseRandomSeed();
         sizeToExpandByEachSide = GenerationalValues.Instance.GetExpandMapBySize();
+        if(useRandomSeed) GenerationalValues.Instance.ChangeRandomizerSeed();
     }
 
     /// <summary>
@@ -89,6 +90,7 @@ public class CellularAutomata : MonoBehaviour
     private void UpdateStoredVariables()
     {
         PCG_Manager.Instance.SetPCGValuesForCellularAutomata(map, randomFillPercent, biomeCount, smoothingIterations, maxPlotCountPerBiome, createBordersBetweenBiomes, similarityCutOff, height, width, seed, useRandomSeed, sizeToExpandByEachSide);
+
     }
 
     /// <summary>
@@ -97,6 +99,7 @@ public class CellularAutomata : MonoBehaviour
     public void GenerateMap()
     {
         InitializeVariables();
+        if (map[0, 1] != 0) map = new int[width, height];
         RandomFillMap();
         SmoothBiomes();
         if (createBordersBetweenBiomes)

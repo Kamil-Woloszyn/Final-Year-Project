@@ -1169,11 +1169,11 @@ RectTransform:
   m_Father: {fileID: 163134428}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -4, y: 347}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 300}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1230215416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2016,14 +2016,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c542a847562bda4ab36480b67562ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 200
-  height: 200
+  width: 100
+  height: 100
   seed: sada
   useRandomSeed: 0
-  randomFillPercent: 56
+  randomFillPercent: 61
   biomeCount: 6
   smoothingIterations: 3
-  maxPlotCountPerBiome: 35
+  maxPlotCountPerBiome: 71
   createBordersBetweenBiomes: 1
   similarityCutOff: 0
   expandMapBySize: 100
@@ -2031,6 +2031,9 @@ MonoBehaviour:
   pathsBetweenStructures: 1
   structuresToGenerate: 7
   minDistBetweenStructures: 132
+  addPatternsPerIteration: 1
+  maxPathsFromStartPoints: 3
+  iterationCount: 301
   pathsFromEachStructure: 2
 --- !u!114 &2122155781
 MonoBehaviour:
