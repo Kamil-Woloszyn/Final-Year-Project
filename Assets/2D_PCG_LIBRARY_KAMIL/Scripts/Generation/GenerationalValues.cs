@@ -1,41 +1,26 @@
+//Created by: Kamil Woloszyn
+//In the Years 2024-2025
 using System;
-using System.Diagnostics;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-
-
-[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
-    AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-public class ConditionalHideAttribute : PropertyAttribute
-{
-    //The name of the bool field that will be in control
-    public string ConditionalSourceField = "";
-    //TRUE = Hide in inspector / FALSE = Disable in inspector 
-    public bool HideInInspector = false;
-
-    public ConditionalHideAttribute(string conditionalSourceField)
-    {
-        this.ConditionalSourceField = conditionalSourceField;
-        this.HideInInspector = false;
-    }
-
-    public ConditionalHideAttribute(string conditionalSourceField, bool hideInInspector)
-    {
-        this.ConditionalSourceField = conditionalSourceField;
-        this.HideInInspector = hideInInspector;
-    }
-}
-
 ///<summary>
 /// This is a class that is used to store all of the different variables inside an object & allow access to the variables from different classes
 /// </summary>
 public class GenerationalValues : MonoBehaviour
 {
+
+
     //Map Arrays
     private int[,] biomeMap;
 
     private int[,] pathAndStructureMap;
 
+    private float[,] heightMap;
+
+    public bool autoUpdate;
+    public bool useRandomSeed;
+    [Space(20f)]
     [Header("Global Generation Variables")]
     [SerializeField]
     public int width;
@@ -46,9 +31,7 @@ public class GenerationalValues : MonoBehaviour
     [SerializeField]
     public string seed;
 
-    [SerializeField]
-    public bool useRandomSeed;
-
+    [Space(20f)]
     [Header("Biome Generation", order = 1)]
     [Range(30, 70)]
     [SerializeField]
@@ -77,6 +60,7 @@ public class GenerationalValues : MonoBehaviour
     public int expandMapBySize;
 
 
+    [Space(20f)]  
     [Header("Path & Structure Generation", order = 1)]
     [SerializeField]
     public bool createStructures = false;
@@ -106,25 +90,47 @@ public class GenerationalValues : MonoBehaviour
     public int pathsFromEachStructure;
 
 
+
+    
+    [Space(20f)]
     [Header("Perlin Noise Generation")]
+    [SerializeField]
+    private float scale;
 
-    private System.Random pseudoRandomGenerator;
+    [SerializeField]
+    private int octaves;
 
+    [SerializeField]
+    private float persistance;
 
+    [SerializeField]
+    private float lacunarity;
+
+    [SerializeField]
+    private Vector2 offset;
+
+    [Space(20f)]
+    [Header("Tiles Used For Generation")]
+
+    [SerializeField]
+    private List<Tile> tiles;
     /// <summary>
     /// Singleton Instance
     /// </summary>
-    public static GenerationalValues Instance { get; private set; }
+    private System.Random pseudoRandomGenerator;
+
+    public static GenerationalValues Singleton { get; private set; }
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Singleton != null && Singleton != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            Singleton = this;
+            DontDestroyOnLoad(this);
         }
     }
 
@@ -140,7 +146,14 @@ public class GenerationalValues : MonoBehaviour
         biomeMap = new int[width, height];
     }
 
-
+    private void OnValidate()
+    {
+        if(tiles.Count < 1)
+        {
+            //Give the user a warning to let them know they forgot to add tiles to inspector
+            Debug.LogError("Please Add Your Own Tiles in the Inspector Window");
+        }
+    }
     /// <summary>
     ///  Getter Function
     /// </summary>
@@ -293,9 +306,60 @@ public class GenerationalValues : MonoBehaviour
         return iterationCount;
     }
 
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
     public int GetAddPatternsPerIteration()
     {
         return addPatternsPerIteration;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public float GetScale()
+    {
+        return scale;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public float GetLacunarity()
+    {
+        return lacunarity;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public float GetPersistance()
+    {
+        return persistance;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public int GetOctaves()
+    {
+        return octaves;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public Vector2 GetMapOffset()
+    {
+        return offset;
+    }
+
+    /// <summary>
+    ///  Getter Function
+    /// </summary>
+    public List<Tile> GetTiles()
+    {
+        return tiles;
     }
 
     /// <summary>
@@ -469,3 +533,26 @@ public class GenerationalValues : MonoBehaviour
         pseudoRandomGenerator = new System.Random(this.seed.GetHashCode());
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(GenerationalValues))]
+public class GenerationalValuesCustomInspector : Editor
+{
+
+    private void OnEnable()
+    {
+
+    }
+
+    public override void OnInspectorGUI()
+    {
+        if (DrawDefaultInspector())
+        {
+            //Include Function call here to auto update values in this inspector
+
+        }
+
+
+    }
+}
+#endif

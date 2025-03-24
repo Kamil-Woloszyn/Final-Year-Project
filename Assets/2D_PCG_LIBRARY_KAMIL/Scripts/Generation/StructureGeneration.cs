@@ -1,3 +1,5 @@
+//Created by: Kamil Woloszyn
+//In the Years 2024-2025
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using UnityEngine;
 
 public class StructureGeneration : MonoBehaviour
 {
-    public static StructureGeneration Instance;
+    public static StructureGeneration Singleton;
     private int[,] structureMap;
     private int height;
     private int width;
@@ -17,19 +19,21 @@ public class StructureGeneration : MonoBehaviour
     private int addPatternsPerIteration;
     private int maxPathsFromStartPoints;
     private int iterationCount;
-
     private int acceptedX = 0;
     private int acceptedY = 0;
+
+    //Reference to the current stop point
+    private Vector2 stopPos;
     private void Awake()
     {
 
-        if (Instance != null && Instance != this)
+        if (Singleton != null && Singleton != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            Singleton = this;
         }
     }
 
@@ -44,11 +48,7 @@ public class StructureGeneration : MonoBehaviour
         List<int[]> coords = new List<int[]>();
         coords.Add(new int[] { width / 2, height / 2 });
         coords = GenerateStructureFromStartPoint(coords, coords.Count);
-        foreach (int[] coord in coords)
-        {
-            Debug.Log(coord[0] +"," + coord[1]);
-        }
-        TileMapLinker.Instance.SetUpTileMapForPaths(structureMap);
+        TileMapLinker.Singleton.SetUpTileMapForPaths(structureMap);
     }
 
     private void ResetMap()
@@ -69,15 +69,15 @@ public class StructureGeneration : MonoBehaviour
     /// </summary>
     private void InitializeVariables()
     {
-        structureMap = GenerationalValues.Instance.GetStructureMap();
-        height = GenerationalValues.Instance.GetHeight();
-        width = GenerationalValues.Instance.GetWidth();
-        structuresToGenerate = GenerationalValues.Instance.GetStructuresToGenerate();
-        minDistBetweenStructures = GenerationalValues.Instance.GetMinDistanceBetweenStructures();
-        pathsFromEachStructure = GenerationalValues.Instance.GetPathsFromEachStructure();
-        pathsBetweenStructures = GenerationalValues.Instance.GetPathsBetweenStructures();
-        iterationCount = GenerationalValues.Instance.GetStructureIterationCount();
-        addPatternsPerIteration = GenerationalValues.Instance.GetAddPatternsPerIteration();
+        structureMap = GenerationalValues.Singleton.GetStructureMap();
+        height = GenerationalValues.Singleton.GetHeight();
+        width = GenerationalValues.Singleton.GetWidth();
+        structuresToGenerate = GenerationalValues.Singleton.GetStructuresToGenerate();
+        minDistBetweenStructures = GenerationalValues.Singleton.GetMinDistanceBetweenStructures();
+        pathsFromEachStructure = GenerationalValues.Singleton.GetPathsFromEachStructure();
+        pathsBetweenStructures = GenerationalValues.Singleton.GetPathsBetweenStructures();
+        iterationCount = GenerationalValues.Singleton.GetStructureIterationCount();
+        addPatternsPerIteration = GenerationalValues.Singleton.GetAddPatternsPerIteration();
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class StructureGeneration : MonoBehaviour
     /// </summary>
     private void UpdateOriginalVariables()
     {
-        PCG_Manager.Instance.SetPCGValuesForPathsAndStructures(structureMap, height, width, structuresToGenerate, minDistBetweenStructures, pathsFromEachStructure);
+        PCG_Manager.Singleton.SetPCGValuesForPathsAndStructures(structureMap, height, width, structuresToGenerate, minDistBetweenStructures, pathsFromEachStructure);
     }
 
     /// <summary>
@@ -103,8 +103,8 @@ public class StructureGeneration : MonoBehaviour
 
 
 
-        int startingStructureX = GenerationalValues.Instance.RandomValueBetween(0, width);
-        int startingStructureY = GenerationalValues.Instance.RandomValueBetween(0, height);
+        int startingStructureX = GenerationalValues.Singleton.RandomValueBetween(0, width);
+        int startingStructureY = GenerationalValues.Singleton.RandomValueBetween(0, height);
         //Starting Structure
         structureMap[startingStructureX, startingStructureY] = 1;
         int structuresGenerated = 0;
@@ -116,8 +116,8 @@ public class StructureGeneration : MonoBehaviour
                 structureMap[acceptedX, acceptedY] = 1;
             }
 
-            startingStructureX = GenerationalValues.Instance.RandomValueBetween(0, width);
-            startingStructureY = GenerationalValues.Instance.RandomValueBetween(0, height);
+            startingStructureX = GenerationalValues.Singleton.RandomValueBetween(0, width);
+            startingStructureY = GenerationalValues.Singleton.RandomValueBetween(0, height);
         }
     }
 
@@ -129,7 +129,7 @@ public class StructureGeneration : MonoBehaviour
     /// <returns>boolean that states whether the structure was generated or not</returns>
     private bool GenerateStructureCentre(int x, int y)
     {
-        int randomAngle = GenerationalValues.Instance.RandomValueBetween(0, 360);
+        int randomAngle = GenerationalValues.Singleton.RandomValueBetween(0, 360);
         int structureX = 0;
         int structureY = 0;
         bool structureAccepted = false;
@@ -201,24 +201,24 @@ public class StructureGeneration : MonoBehaviour
             {
                 int pathsBlocked = 0;
                 if (!(coords[0] < 0 || coords[0] > width || coords[1] < 0 || coords[1] > height ||
-                    coords[0] + 1 < 0 || coords[0] + 1 > width || coords[1] + 1 < 0 || coords[1] + 1 > height ||
-                    coords[0] - 1 < 0 || coords[0] - 1 > width || coords[1] - 1 < 0 || coords[1] - 1 > height))
+                    coords[0] + 2 < 0 || coords[0] + 2 > width || coords[1] + 2 < 0 || coords[1] + 2 > height ||
+                    coords[0] - 2 < 0 || coords[0] - 2 > width || coords[1] - 2 < 0 || coords[1] - 2 > height))
                 {
                     
                     //Check if each coord is still a valid point of expansion
-                    if (structureMap[coords[0], coords[1] + 1] == 1)
+                    if (structureMap[coords[0], coords[1] + 2] == 1)
                     {
                         pathsBlocked++;
                     }
-                    if (structureMap[coords[0], coords[1] - 1] == 1)
+                    if (structureMap[coords[0], coords[1] - 2] == 1)
                     {
                         pathsBlocked++;
                     }
-                    if (structureMap[coords[0] + 1, coords[1]] == 1)
+                    if (structureMap[coords[0] + 2, coords[1]] == 1)
                     {
                         pathsBlocked++;
                     }
-                    if (structureMap[coords[0] - 1, coords[1]] == 1)
+                    if (structureMap[coords[0] - 2, coords[1]] == 1)
                     {
                         pathsBlocked++;
                     }
@@ -255,7 +255,7 @@ public class StructureGeneration : MonoBehaviour
                         break;
                 }
             }
-
+            startCoords.Clear();
             char[] patternArrayChar = pattern.ToUpper().ToCharArray();
             foreach (char character in patternArrayChar)
             {
@@ -267,7 +267,7 @@ public class StructureGeneration : MonoBehaviour
                         structureMap[currentCoords[0], currentCoords[1] + 1] = 1;
                         structureMap[currentCoords[0], currentCoords[1] + 2] = 1;
                         startCoords.Add(new int[] { currentCoords[0], currentCoords[1] + 2 });
-
+                        stopPos = new Vector2(currentCoords[0], currentCoords[1] + 2);
                     }
                 }
                 else if (character.Equals('E'))
@@ -278,7 +278,7 @@ public class StructureGeneration : MonoBehaviour
                         structureMap[currentCoords[0] + 1, currentCoords[1]] = 1;
                         structureMap[currentCoords[0] + 2, currentCoords[1]] = 1;
                         startCoords.Add(new int[] { currentCoords[0] + 2, currentCoords[1] });
-
+                        stopPos = new Vector2(currentCoords[0] + 2, currentCoords[1]);
                     }
                 }
                 else if (character.Equals('S'))
@@ -289,7 +289,7 @@ public class StructureGeneration : MonoBehaviour
                         structureMap[currentCoords[0], currentCoords[1] - 1] = 1;
                         structureMap[currentCoords[0], currentCoords[1] - 2] = 1;
                         startCoords.Add(new int[] { currentCoords[0], currentCoords[1] - 2 });
-
+                        stopPos = new Vector2(currentCoords[0], currentCoords[1] - 2);
                     }
                 }
                 else if (character.Equals('W'))
@@ -300,10 +300,11 @@ public class StructureGeneration : MonoBehaviour
                         structureMap[currentCoords[0] - 1, currentCoords[1]] = 1;
                         structureMap[currentCoords[0] - 2, currentCoords[1]] = 1;
                         startCoords.Add(new int[] { currentCoords[0] - 2, currentCoords[1] });
+                        stopPos = new Vector2(currentCoords[0] - 2, currentCoords[1]);
                     }
 
                 }
-
+                 
             }
         }
 
@@ -313,7 +314,7 @@ public class StructureGeneration : MonoBehaviour
     private string RandomPattern()
     {
         string pattern = "";
-        switch (GenerationalValues.Instance.RandomValueBetween(0, 3))
+        switch (GenerationalValues.Singleton.RandomValueBetween(0, 3))
         {
             case 0:
                 pattern += "N";

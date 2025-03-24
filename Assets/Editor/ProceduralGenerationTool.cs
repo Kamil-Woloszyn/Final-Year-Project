@@ -1,9 +1,23 @@
+//Created by: Kamil Woloszyn
+//In the Years 2024-2025
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Tilemaps;
 using UnityEditor.PackageManager.UI;
 using UnityEngine.TextCore.Text;
 
+public class InstructionsTab : EditorWindow
+{
+    
+
+    [MenuItem("PCG/Instructions")]
+    public static void ShowWindow()
+    {
+        Debug.Log(System.Environment.CurrentDirectory + "/Assets/PDFs/Instructions.pdf");
+        Application.OpenURL(System.Environment.CurrentDirectory + "/Assets/PDFs/Instructions.pdf");
+    }
+
+}
 public class ProceduralGenerationToolEditorMode : EditorWindow
 {
     string objectBaseName = "MapManager";
@@ -55,7 +69,7 @@ public class ProceduralGenerationToolEditorMode : EditorWindow
         GUI.DrawTexture(headerArea, headerTexture);
 
 
-        GUILayout.Label("Procedural Generation Editor", skin.GetStyle("Header1"));
+        GUILayout.Label("Procedural Generation Editor (DEPRECATED)", skin.GetStyle("Header1"));
         GUILayout.Label("For use to compile map outside of play mode (Non Runtime Generation) \n", skin.GetStyle("Sub-Header1") );
         
         scrollPosition = GUI.BeginScrollView(bodyArea, scrollPosition, new Rect(0, 50, Screen.width, 0));
@@ -144,6 +158,8 @@ public class ProceduralGenerationToolPlayMode : EditorWindow
         managerSpawnedInHirearchy = false;
     }
 
+
+
     private void OnGUI()
     {
         Rect headerArea = new Rect(0, 0, Screen.width, 50);
@@ -161,13 +177,18 @@ public class ProceduralGenerationToolPlayMode : EditorWindow
         {
             if (!managerSpawnedInHirearchy)
             {
-                //newObject = new GameObject();
-                //newObject.AddComponent<GenerationalValues>();
-                //newObject.AddComponent<PCG_Manager>();
-                //newObject.AddComponent<TileMapLinker>();
-                //newObject.AddComponent<CellularAutomata>();
-                //newObject.AddComponent<StructureGeneration>();
-                //newObject.name = "PCG_Map_Manager";
+                newObject = new GameObject();
+                
+                newObject.AddComponent<GenerationalValues>();
+                newObject.AddComponent<TileMapLinker>();
+                newObject.AddComponent<Pathfind_Astar>();
+                newObject.AddComponent<PCG_Manager>();
+                newObject.AddComponent<CellularAutomata>();
+                newObject.AddComponent<StructureGeneration>();
+                newObject.AddComponent<PerlinNoise>();
+                newObject.name = "PCG_Map_Manager";
+                newObject.tag = "PCG_Manager";
+
                 managerSpawnedInHirearchy = true;
                 
             }

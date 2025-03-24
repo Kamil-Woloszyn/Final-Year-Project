@@ -8,6 +8,8 @@ TagManager:
   - SmoothButton
   - EnlargeButton
   - CreatePaths
+  - TileMap
+  - PCG_Manager
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Unwalkable
+  - Walkable
   - 
   - 
   - 

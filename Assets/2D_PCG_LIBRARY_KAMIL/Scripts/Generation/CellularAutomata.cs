@@ -1,3 +1,5 @@
+//Created by: Kamil Woloszyn
+//In the Years 2024-2025
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -15,6 +17,7 @@ using UnityEditor.Experimental.GraphView;
 /// </summary>
 public class CellularAutomata : MonoBehaviour
 {
+    //Private variables
     private int[,] map;
 
     private int randomFillPercent;
@@ -40,17 +43,17 @@ public class CellularAutomata : MonoBehaviour
     /// <summary>
     /// Singleton Instance
     /// </summary>
-    public static CellularAutomata Instance { get; private set; }
+    public static CellularAutomata Singleton { get; private set; }
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Singleton != null && Singleton != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            Singleton = this;
         }
     }
 
@@ -67,21 +70,21 @@ public class CellularAutomata : MonoBehaviour
     /// </summary>
     private void InitializeVariables()
     {
-        width = GenerationalValues.Instance.GetWidth();
-        height = GenerationalValues.Instance.GetHeight();
+        width = GenerationalValues.Singleton.GetWidth();
+        height = GenerationalValues.Singleton.GetHeight();
         map = new int[width,height];
         //Initalizing Values
-        map = GenerationalValues.Instance.GetBiomeMap();
-        randomFillPercent = GenerationalValues.Instance.GetRandomFillPercent();
-        biomeCount = GenerationalValues.Instance.GetBiomeCount();
-        smoothingIterations = GenerationalValues.Instance.GetSmoothingIterations();
-        maxPlotCountPerBiome = GenerationalValues.Instance.GetMaxPlotCountPerBiomes();
-        createBordersBetweenBiomes = GenerationalValues.Instance.GetCreateBordersBetweenBiomes();
-        similarityCutOff = GenerationalValues.Instance.GetSimilarityCutOff();
-        seed = GenerationalValues.Instance.GetSeed();
-        useRandomSeed = GenerationalValues.Instance.GetUseRandomSeed();
-        sizeToExpandByEachSide = GenerationalValues.Instance.GetExpandMapBySize();
-        if(useRandomSeed) GenerationalValues.Instance.ChangeRandomizerSeed();
+        map = GenerationalValues.Singleton.GetBiomeMap();
+        randomFillPercent = GenerationalValues.Singleton.GetRandomFillPercent();
+        biomeCount = GenerationalValues.Singleton.GetBiomeCount();
+        smoothingIterations = GenerationalValues.Singleton.GetSmoothingIterations();
+        maxPlotCountPerBiome = GenerationalValues.Singleton.GetMaxPlotCountPerBiomes();
+        createBordersBetweenBiomes = GenerationalValues.Singleton.GetCreateBordersBetweenBiomes();
+        similarityCutOff = GenerationalValues.Singleton.GetSimilarityCutOff();
+        seed = GenerationalValues.Singleton.GetSeed();
+        useRandomSeed = GenerationalValues.Singleton.GetUseRandomSeed();
+        sizeToExpandByEachSide = GenerationalValues.Singleton.GetExpandMapBySize();
+        if(useRandomSeed) GenerationalValues.Singleton.ChangeRandomizerSeed();
     }
 
     /// <summary>
@@ -89,18 +92,18 @@ public class CellularAutomata : MonoBehaviour
     /// </summary>
     private void UpdateStoredVariables()
     {
-        PCG_Manager.Instance.SetPCGValuesForCellularAutomata(map, randomFillPercent, biomeCount, smoothingIterations, maxPlotCountPerBiome, createBordersBetweenBiomes, similarityCutOff, height, width, seed, useRandomSeed, sizeToExpandByEachSide);
+        PCG_Manager.Singleton.SetPCGValuesForCellularAutomata(map, randomFillPercent, biomeCount, smoothingIterations, maxPlotCountPerBiome, createBordersBetweenBiomes, similarityCutOff, height, width, seed, useRandomSeed, sizeToExpandByEachSide);
 
     }
 
     /// <summary>
     /// Function to generate initial randomly filled map that will be then smoothed out
     /// </summary>
-    public void GenerateMap()
+    public void GenerateMap_CA()
     {
         InitializeVariables();
         if (map[0, 1] != 0) map = new int[width, height];
-        RandomFillMap();
+        RandomFill();
         SmoothBiomes();
         if (createBordersBetweenBiomes)
         {
@@ -125,7 +128,7 @@ public class CellularAutomata : MonoBehaviour
     /// <summary>
     /// Function that will randomly fill map with biome plots using PCG settings
     /// </summary>
-    private void RandomFillMap()
+    private void RandomFill()
     {
         List<int> remainingPlotsPerBiome = new List<int>();
         for(int i = 0; i < biomeCount; i++)
@@ -140,8 +143,8 @@ public class CellularAutomata : MonoBehaviour
             {
                 for(int j = remainingPlots; j != 0;  j--)
                 {
-                    int x = GenerationalValues.Instance.RandomValueBetween(0, width);
-                    int y = GenerationalValues.Instance.RandomValueBetween(0, height);
+                    int x = GenerationalValues.Singleton.RandomValueBetween(0, width);
+                    int y = GenerationalValues.Singleton.RandomValueBetween(0, height);
                     map[x, y] = i;
                 }
                 
@@ -164,9 +167,9 @@ public class CellularAutomata : MonoBehaviour
             for(int y = 0; y < newHeight; y++)
             {
                 newMap[x, y] = 0;
-                if(y <= sizeToExpandByEachSide || x <= sizeToExpandByEachSide) newMap[x, y] = GenerationalValues.Instance.RandomValueBetween(0, 100) > 98 ? GenerationalValues.Instance.RandomValueBetween(1, biomeCount) : 0;
+                if(y <= sizeToExpandByEachSide || x <= sizeToExpandByEachSide) newMap[x, y] = GenerationalValues.Singleton.RandomValueBetween(0, 100) > 98 ? GenerationalValues.Singleton.RandomValueBetween(1, biomeCount) : 0;
                 else if (x < width + sizeToExpandByEachSide && y < height + sizeToExpandByEachSide && x > sizeToExpandByEachSide && y > sizeToExpandByEachSide) newMap[x, y] = map[x - sizeToExpandByEachSide, y - sizeToExpandByEachSide];
-                else if(y > newHeight - sizeToExpandByEachSide || x > newWidth - sizeToExpandByEachSide) newMap[x, y] = GenerationalValues.Instance.RandomValueBetween(0, 100) > 98 ? GenerationalValues.Instance.RandomValueBetween(1, biomeCount) : 0;
+                else if(y > newHeight - sizeToExpandByEachSide || x > newWidth - sizeToExpandByEachSide) newMap[x, y] = GenerationalValues.Singleton.RandomValueBetween(0, 100) > 98 ? GenerationalValues.Singleton.RandomValueBetween(1, biomeCount) : 0;
                 
             }
         }
@@ -303,24 +306,24 @@ public class CellularAutomata : MonoBehaviour
     /// Function that will expand out initial map values by checking its neighbouring tiles, it will also override surrounding biomes in contact depending on random fill percent setting
     /// This Function is for smoothing out newly generated terrain
     /// </summary>
-    /// <param name="gridX"></param>
-    /// <param name="gridY"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     /// <param name="biomeToExpand"></param>
-    private void SmoothWithNeighbours1x1(int gridX, int gridY, int biomeToExpand)
+    private void SmoothWithNeighbours1x1(int x, int y, int biomeToExpand)
     {
         //Checking Neighbours
-        for (int neighbourX = gridX - 1; neighbourX <= gridX + 1; neighbourX++)
+        for (int neighbouringX = x - 1; neighbouringX <= x + 1; neighbouringX++)
         {
-            for (int neighbourY = gridY - 1; neighbourY <= gridY + 1; neighbourY++)
+            for (int neighbouringY = y - 1; neighbouringY <= y + 1; neighbouringY++)
             {
-                if (neighbourX >= 0 && neighbourX < width && neighbourY >= 0 && neighbourY < height)
+                if (neighbouringX >= 0 && neighbouringX < width && neighbouringY >= 0 && neighbouringY < height)
                 {
-                    if (map[neighbourX, neighbourY] > 0) map[neighbourX, neighbourY] = (GenerationalValues.Instance.RandomValueBetween(0,100) > randomFillPercent) ? biomeToExpand : map[neighbourX, neighbourY];
-                    else map[neighbourX, neighbourY] = biomeToExpand;
+                    if (map[neighbouringX, neighbouringY] > 0) map[neighbouringX, neighbouringY] = (GenerationalValues.Singleton.RandomValueBetween(0,100) > randomFillPercent) ? biomeToExpand : map[neighbouringX, neighbouringY];
+                    else map[neighbouringX, neighbouringY] = biomeToExpand;
                 }
                 else
                 {
-                    map[gridX, gridX] = 0;
+                    map[x, x] = 0;
                 }
             }
         }
@@ -330,30 +333,30 @@ public class CellularAutomata : MonoBehaviour
     /// Function that will expand out initial map values by checking its neighbouring tiles, it will also override surrounding biomes in contact depending on random fill percent setting 
     /// This Function is for smoothing out newly generated terrain after expanding the map
     /// </summary>
-    /// <param name="gridX"></param>
-    /// <param name="gridY"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     /// <param name="biomeToExpand"></param>
     /// <param name="newMap"></param>
     /// <param name="newWidth"></param>
     /// <param name="newHeight"></param>
     /// <returns></returns>
-    private int[,] SmoothWithNeighbours1x1NewArea(int gridX, int gridY, int biomeToExpand, int[,] newMap, int newWidth, int newHeight)
+    private int[,] SmoothWithNeighbours1x1NewArea(int x, int y, int biomeToExpand, int[,] newMap, int newWidth, int newHeight)
     {
         //Checking Neighbours
-        for (int neighbourX = gridX - 1; neighbourX <= gridX + 1; neighbourX++)
+        for (int neighbouringX = x - 1; neighbouringX <= x + 1; neighbouringX++)
         {
-            for (int neighbourY = gridY - 1; neighbourY <= gridY + 1; neighbourY++)
+            for (int neighbouringY = y - 1; neighbouringY <= y + 1; neighbouringY++)
             {
-                if (neighbourX >= 0 && neighbourX < newWidth && neighbourY >= 0 && neighbourY < newHeight)
+                if (neighbouringX >= 0 && neighbouringX < newWidth && neighbouringY >= 0 && neighbouringY < newHeight)
                 {
-                    if (newMap[neighbourX, neighbourY] > 0) newMap[neighbourX, neighbourY] = (GenerationalValues.Instance.RandomValueBetween(0, 100) > randomFillPercent) ? biomeToExpand : newMap[neighbourX, neighbourY];
-                    else newMap[neighbourX, neighbourY] = biomeToExpand;
+                    if (newMap[neighbouringX, neighbouringY] > 0) newMap[neighbouringX, neighbouringY] = (GenerationalValues.Singleton.RandomValueBetween(0, 100) > randomFillPercent) ? biomeToExpand : newMap[neighbouringX, neighbouringY];
+                    else newMap[neighbouringX, neighbouringY] = biomeToExpand;
 
 
                 }
                 else
                 {
-                    newMap[gridX, gridX] = 0;
+                    newMap[x, x] = 0;
                 }
             }
         }
