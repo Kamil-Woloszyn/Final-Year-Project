@@ -121,7 +121,7 @@ public class TileMapLinker : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (map[x, y] < 0.1)
+                if (map[x, y] < 0.3)
                 {
                     //Set the Tile to water
                     tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[1].tileTexture);

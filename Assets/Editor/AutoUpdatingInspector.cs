@@ -19,8 +19,6 @@ public class AutoUpdatingInspector : Editor
                 if (mapGen.autoUpdate)
                 {
                     AutoClearTileMap();
-
-
                 }
             }
 
@@ -28,7 +26,7 @@ public class AutoUpdatingInspector : Editor
 
          
 
-        if (GUILayout.Button("Clear & Update Map"))
+        if (GUILayout.Button("Clear Map"))
         {
             AutoClearTileMap();
         }

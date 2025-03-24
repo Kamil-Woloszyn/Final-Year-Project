@@ -84,7 +84,13 @@ public class CellularAutomata : MonoBehaviour
         seed = GenerationalValues.Singleton.GetSeed();
         useRandomSeed = GenerationalValues.Singleton.GetUseRandomSeed();
         sizeToExpandByEachSide = GenerationalValues.Singleton.GetExpandMapBySize();
-        if(useRandomSeed) GenerationalValues.Singleton.ChangeRandomizerSeed();
+        if (useRandomSeed)
+        {
+            GenerationalValues.Singleton.SetSeed(DateTime.Now.ToString());
+            GenerationalValues.Singleton.ChangeRandomizerSeed(seed);
+            seed = DateTime.Now.ToString();
+        }
+
     }
 
     /// <summary>

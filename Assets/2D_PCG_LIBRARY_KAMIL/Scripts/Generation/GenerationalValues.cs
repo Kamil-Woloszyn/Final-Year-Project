@@ -9,8 +9,6 @@ using UnityEngine;
 /// </summary>
 public class GenerationalValues : MonoBehaviour
 {
-
-
     //Map Arrays
     private int[,] biomeMap;
 
@@ -131,6 +129,11 @@ public class GenerationalValues : MonoBehaviour
         {
             Singleton = this;
             DontDestroyOnLoad(this);
+        }
+
+        if(useRandomSeed)
+        {
+            seed = DateTime.Now.ToString();
         }
     }
 

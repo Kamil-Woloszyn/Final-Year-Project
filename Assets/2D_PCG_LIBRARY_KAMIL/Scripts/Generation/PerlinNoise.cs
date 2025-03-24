@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PerlinNoise : MonoBehaviour
 {
+    //Variables
+    /// <summary>
+    /// Singleton 
+    /// </summary>
     public static PerlinNoise Singleton = null;
     private int height;
     private int width;
@@ -29,6 +33,9 @@ public class PerlinNoise : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Function to initialize vairables
+    /// </summary>
     private void InitializeVariables()
     {
         height = GenerationalValues.Singleton.GetHeight();
@@ -41,6 +48,10 @@ public class PerlinNoise : MonoBehaviour
         offset = GenerationalValues.Singleton.GetMapOffset();
     }
 
+    /// <summary>
+    /// Function to generate height map outside and initializing variables
+    /// </summary>
+    /// <returns></returns>
     public float[,] GenerateHeightMap()
     {
         InitializeVariables();
@@ -49,8 +60,11 @@ public class PerlinNoise : MonoBehaviour
     }
 
     
-
-    public float[,] GenerateNoiseMap()
+    /// <summary>
+    /// Function to generate a float 2d array of noise values 
+    /// </summary>
+    /// <returns></returns>
+    private float[,] GenerateNoiseMap()
     {
         float[,] noiseMap = new float[width, height];
 

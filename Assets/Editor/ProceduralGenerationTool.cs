@@ -137,7 +137,9 @@ public class ProceduralGenerationToolEditorMode : EditorWindow
 public class ProceduralGenerationToolPlayMode : EditorWindow
 {
     //Variables for this window
-    GameObject newObject;
+    GameObject managerObject;
+    GameObject gridObject;
+    GameObject tilemapObject;
     //Editor Variables
     GUISkin skin;
     Texture2D headerTexture;
@@ -177,19 +179,46 @@ public class ProceduralGenerationToolPlayMode : EditorWindow
         {
             if (!managerSpawnedInHirearchy)
             {
-                newObject = new GameObject();
+                managerObject = new GameObject();
                 
-                newObject.AddComponent<GenerationalValues>();
-                newObject.AddComponent<TileMapLinker>();
-                newObject.AddComponent<Pathfind_Astar>();
-                newObject.AddComponent<PCG_Manager>();
-                newObject.AddComponent<CellularAutomata>();
-                newObject.AddComponent<StructureGeneration>();
-                newObject.AddComponent<PerlinNoise>();
-                newObject.name = "PCG_Map_Manager";
-                newObject.tag = "PCG_Manager";
+                managerObject.AddComponent<GenerationalValues>();
+                managerObject.AddComponent<TileMapLinker>();
+                managerObject.AddComponent<Pathfind_Astar>();
+                managerObject.AddComponent<PCG_Manager>();
+                managerObject.AddComponent<CellularAutomata>();
+                managerObject.AddComponent<StructureGeneration>();
+                managerObject.AddComponent<PerlinNoise>();
+                managerObject.name = "PCG_Map_Manager";
+                managerObject.tag = "PCG_Manager";
 
+
+                gridObject = new GameObject();
+
+                gridObject.AddComponent<Grid>();
+                gridObject.GetComponent<Grid>().cellSize = new Vector3(1, 1, 0);
+                gridObject.name = "Grid";
+
+
+                tilemapObject = new GameObject();
+
+                tilemapObject.AddComponent<Tilemap>();
+                tilemapObject.AddComponent<TilemapRenderer>();
+                tilemapObject.AddComponent<TilemapCollider2D>();
+                tilemapObject.AddComponent<Rigidbody2D>();
+                tilemapObject.AddComponent<CompositeCollider2D>();
+                tilemapObject.name = "Tilemap";
+                tilemapObject.tag = "TileMap";
+
+                tilemapObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                tilemapObject.GetComponent<Rigidbody2D>().simulated = true;
+                tilemapObject.GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                tilemapObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
+                tilemapObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                tilemapObject.GetComponent<TilemapCollider2D>().usedByComposite = true;
+                tilemapObject.GetComponent<TilemapCollider2D>().excludeLayers = LayerMask.NameToLayer("Walkable");
+                tilemapObject.gameObject.transform.parent = gridObject.transform;
                 managerSpawnedInHirearchy = true;
+                
                 
             }
             managerSpawnedInHirearchy = true;

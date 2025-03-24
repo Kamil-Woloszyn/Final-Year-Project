@@ -1,0 +1,267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kamil_Special
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 1c542a847562bda4ab36480b67562ab1, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: autoUpdate
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: useRandomSeed
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: width
+    value: 4000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: height
+    value: 4000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: seed
+    value: Kamil
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: randomFillPercent
+    value: 54
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: biomeCount
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: smoothingIterations
+    value: 38
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxPlotCountPerBiome
+    value: 86
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: createBordersBetweenBiomes
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: similarityCutOff
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: expandMapBySize
+    value: 4000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: createStructures
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pathsBetweenStructures
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: structuresToGenerate
+    value: 27
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minDistBetweenStructures
+    value: 182
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: addPatternsPerIteration
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxPathsFromStartPoints
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: iterationCount
+    value: 2093
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pathsFromEachStructure
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: scale
+    value: 3.57
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: octaves
+    value: 21
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: persistance
+    value: 1.15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: lacunarity
+    value: 1.71
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: offset.x
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: offset.y
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.size
+    value: 11
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[0].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: e7390239f96420d4092152edc08c7f3c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[0].walkable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[0].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[1].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: c75442121a6195748afa73e2d266514c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[1].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[1].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[2].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 7da0acd4f444fc641a40fc2781d4048a, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[2].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[2].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[3].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: fd1bda06f74c3cf4984dd8e1bd3e6f01, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[3].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[3].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[4].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: c394fd2dc8cfb64459ef5ebf3c1a88c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[4].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[4].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[5].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 6319edaa7279b6a4d8ee4e82ac4d1bb6, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[5].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[5].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[6].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 01432586f3c06fd42913b8f285682366, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[6].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[6].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[7].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 130122d2173d80e468a966def850da73, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[7].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[7].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[8].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 9018a965ad511c044ad5bf15ca8c4a92, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[8].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[8].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[9].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: ab7a927998362fc42be9230166d0e979, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[9].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[9].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[10].tileTexture
+    value: 
+    objectReference: {fileID: 11400000, guid: 923793363ed66db418ebf0b5d04377f8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[10].walkable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tiles.Array.data[10].hazardous
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
