@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6570385965985727710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210924358213267590}
+  - component: {fileID: 6515546731250369242}
+  - component: {fileID: 6177419561710342382}
+  - component: {fileID: 3846309452371904309}
+  - component: {fileID: 8266340584403092312}
+  - component: {fileID: 3017430554990984876}
+  - component: {fileID: 663427025776567641}
+  - component: {fileID: 8043542373826240938}
+  m_Layer: 0
+  m_Name: MapGeneration Manager
+  m_TagString: PCG_Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210924358213267590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.422546, y: 6.871887, z: -11.58766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6515546731250369242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c542a847562bda4ab36480b67562ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoUpdate: 0
+  useRandomSeed: 0
+  width: 500
+  height: 500
+  seed: pasokjdpadka[eqwke
+  randomFillPercent: 49
+  biomeCount: 7
+  smoothingIterations: 16
+  maxPlotCountPerBiome: 15
+  createBordersBetweenBiomes: 1
+  similarityCutOff: 4
+  expandMapBySize: 100
+  createStructures: 1
+  pathsBetweenStructures: 1
+  structuresToGenerate: 27
+  minDistBetweenStructures: 182
+  addPatternsPerIteration: 2
+  maxPathsFromStartPoints: 3
+  iterationCount: 1331
+  pathsFromEachStructure: 1
+  scale: 2.39
+  octaves: 10
+  persistance: 1
+  lacunarity: 1
+  offset: {x: 5, y: 5}
+  tiles:
+  - tileTexture: {fileID: 11400000, guid: 6319edaa7279b6a4d8ee4e82ac4d1bb6, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: e7390239f96420d4092152edc08c7f3c, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 7da0acd4f444fc641a40fc2781d4048a, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 923793363ed66db418ebf0b5d04377f8, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: fd1bda06f74c3cf4984dd8e1bd3e6f01, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 130122d2173d80e468a966def850da73, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: ab7a927998362fc42be9230166d0e979, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 01432586f3c06fd42913b8f285682366, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: fd1bda06f74c3cf4984dd8e1bd3e6f01, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: c75442121a6195748afa73e2d266514c, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 7da0acd4f444fc641a40fc2781d4048a, type: 2}
+    walkable: 0
+    hazardous: 0
+  - tileTexture: {fileID: 11400000, guid: 9018a965ad511c044ad5bf15ca8c4a92, type: 2}
+    walkable: 0
+    hazardous: 0
+--- !u!114 &6177419561710342382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88f375bacd067d4b8b38c8c17704889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3846309452371904309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22405eb5aa8b7404491cb9ed45580917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellsToSearch: []
+  searchedCells: []
+  finalPath: []
+--- !u!114 &8266340584403092312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ababd7cd606235f42864d0c528b05024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileMap: {fileID: 0}
+--- !u!114 &3017430554990984876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd8eeeff6d374b40a7e6bb91b32c90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &663427025776567641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76eb31482c946d40b58f453ae693e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8043542373826240938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570385965985727710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238b79e8f2318434faf602b8cd2cd8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -151,11 +151,11 @@ public class GenerationalValues : MonoBehaviour
 
     private void OnValidate()
     {
-        if(tiles.Count < 1)
-        {
+        //if(tiles.Count < 1)
+        //{
             //Give the user a warning to let them know they forgot to add tiles to inspector
-            Debug.LogError("Please Add Your Own Tiles in the Inspector Window");
-        }
+          //  Debug.LogWarning("Please Add Your Own Tiles in the Inspector Window");
+        //}
     }
     /// <summary>
     ///  Getter Function
@@ -518,6 +518,8 @@ public class GenerationalValues : MonoBehaviour
 
     public int RandomValueBetween(int min, int max)
     {
+        if (pseudoRandomGenerator == null)
+            return 0;
         return pseudoRandomGenerator.Next(min, max);
     }
 
@@ -537,25 +539,25 @@ public class GenerationalValues : MonoBehaviour
     }
 }
 
+/*
 #if UNITY_EDITOR
 [CustomEditor(typeof(GenerationalValues))]
 public class GenerationalValuesCustomInspector : Editor
 {
-
     private void OnEnable()
     {
-
     }
 
     public override void OnInspectorGUI()
     {
+        GenerationalValues pathfind = (GenerationalValues)target;
         if (DrawDefaultInspector())
         {
             //Include Function call here to auto update values in this inspector
 
         }
 
-
     }
 }
 #endif
+*/

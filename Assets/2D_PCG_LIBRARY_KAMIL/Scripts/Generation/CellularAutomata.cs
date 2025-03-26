@@ -108,7 +108,7 @@ public class CellularAutomata : MonoBehaviour
     public void GenerateMap_CA()
     {
         InitializeVariables();
-        if (map[0, 1] != 0) map = new int[width, height];
+        map = new int[width, height];
         RandomFill();
         SmoothBiomes();
         if (createBordersBetweenBiomes)
@@ -432,3 +432,26 @@ public class CellularAutomata : MonoBehaviour
     }
 
 }
+
+/*
+#if UNITY_EDITOR
+[CustomEditor(typeof(CellularAutomata))]
+public class CellularAutomataCustomInspector : Editor
+{
+    private void OnEnable()
+    {
+    }
+
+    public override void OnInspectorGUI()
+    {
+        CellularAutomata pathfind = (CellularAutomata)target;
+        if (DrawDefaultInspector())
+        {
+            //Include Function call here to auto update values in this inspector
+
+        }
+
+    }
+}
+#endif
+*/

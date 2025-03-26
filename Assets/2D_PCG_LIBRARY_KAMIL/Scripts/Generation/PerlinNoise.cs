@@ -33,6 +33,11 @@ public class PerlinNoise : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        InitializeVariables();
+    }
+
     /// <summary>
     /// Function to initialize vairables
     /// </summary>
@@ -136,7 +141,7 @@ public class PerlinNoise : MonoBehaviour
 }
 
 
-
+/*
 #if UNITY_EDITOR
 [CustomEditor(typeof(PerlinNoise))]
 public class PerlinNoiseCustomInspector : Editor
@@ -157,3 +162,4 @@ public class PerlinNoiseCustomInspector : Editor
     }
 }
 #endif
+*/

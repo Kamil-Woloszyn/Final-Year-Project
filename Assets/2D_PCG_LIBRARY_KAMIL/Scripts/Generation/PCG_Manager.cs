@@ -86,7 +86,7 @@ public class PCG_Manager : MonoBehaviour
     }
     
 }
-
+/*
 #if UNITY_EDITOR
 [CustomEditor(typeof(PCG_Manager))]
 public class PCG_ManagerCustomInspector : Editor
@@ -107,3 +107,4 @@ public class PCG_ManagerCustomInspector : Editor
     }
 }
 #endif
+*/

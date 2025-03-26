@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TileMapLinker" Collapsed="true">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAEACCAAABAgAgAAACAAgAAACEAAAMAAAAAAEA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\TileMapLinker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenerationalValues" Collapsed="true">
+    <Position X="7" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hMCKYQABAuEARIyQTAEA+VxSCxQEEDWArAkUAFQBDEQ=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\GenerationalValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenerationalValuesCustomInspector" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\GenerationalValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathGeneration" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\PathGeneration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCG_Manager" Collapsed="true">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAgAAAAAgAAAACAAAAAAQEAAAAAEAAAAEA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\PCG_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PCG_ManagerCustomInspector" Collapsed="true">
+    <Position X="15.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\PCG_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerlinNoise" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAFAAAAQAQAQAEAAEBCAAACAAEAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\PerlinNoise.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerlinNoiseCustomInspector" Collapsed="true">
+    <Position X="13.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\PerlinNoise.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StructureGeneration" Collapsed="true">
+    <Position X="7" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIAIAAEFAAAAAAQAwAAAARgAIARAAAEAAAAUAAAAAEA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\StructureGeneration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellularAutomata" Collapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAAcAAECqBQQAQARAgAEEIAAAAAAAEAiAgQAAAAAEA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Generation\CellularAutomata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tile" Collapsed="true">
+    <Position X="4.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAEAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Objects\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellularAutomataCaves" Collapsed="true">
+    <Position X="11.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAAAgAAQAQAZAAAAAAAAAAAAAAAiAAAABAAAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\CellularAutomataCaves.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellularAutomataCavesCustomInspector" Collapsed="true">
+    <Position X="13.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\CellularAutomataCaves.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pathfind_Astar" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Pathfind_Astar.Cell" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\Pathfind_Astar.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAABAAAAAACAAAAAAIAACAAAAYIAAACAARAAAAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\Pathfind_Astar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pathfind_AstarCustomInspector" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\Pathfind_Astar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrimsAlgorithm" Collapsed="true">
+    <Position X="11.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\Prims Algorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrimsAlgorithmCustomInspector" Collapsed="true">
+    <Position X="15.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\2D_PCG_LIBRARY_KAMIL\Scripts\Standalone Scripts\Prims Algorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UnityEditor.Editor" Collapsed="true">
+    <Position X="14.75" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

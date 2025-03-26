@@ -44,6 +44,11 @@ public class TileMapLinker : MonoBehaviour
     {
         tileMap = FindObjectOfType<Tilemap>().GetComponent<Tilemap>();
         tiles = GenerationalValues.Singleton.GetTiles();
+        terrainMap = GenerationalValues.Singleton.GetBiomeMap();
+        if(terrainMap == null)
+        {
+            terrainMap = new int[GenerationalValues.Singleton.GetWidth(), GenerationalValues.Singleton.GetHeight()];
+        }
     }
 
 
@@ -72,7 +77,13 @@ public class TileMapLinker : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[terrainMap[x, y]].tileTexture);
+                if(x < width && y < height)
+                {
+
+                    tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[terrainMap[x, y]].tileTexture);
+
+                }
+                
             }
         }
 
@@ -123,7 +134,7 @@ public class TileMapLinker : MonoBehaviour
             {
                 if (map[x, y] < 0.3)
                 {
-                    //Set the Tile to water
+                    Debug.Assert(map != null, "map is null");
                     tileMap.SetTile(new Vector3Int(x - widthOffset, y - heightOffset, 0), tiles[1].tileTexture);
                 }
 
@@ -146,3 +157,25 @@ public class TileMapLinker : MonoBehaviour
     }
 
 }
+/*
+#if UNITY_EDITOR
+[CustomEditor(typeof(TileMapLinker))]
+public class TileMapLinkerCustomInspector : Editor
+{
+    private void OnEnable()
+    {
+    }
+
+    public override void OnInspectorGUI()
+    {
+        TileMapLinker pathfind = (TileMapLinker)target;
+        if (DrawDefaultInspector())
+        {
+            //Include Function call here to auto update values in this inspector
+
+        }
+
+    }
+}
+#endif
+*/

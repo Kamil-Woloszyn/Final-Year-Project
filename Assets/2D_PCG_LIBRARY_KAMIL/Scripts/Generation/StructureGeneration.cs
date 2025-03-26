@@ -37,6 +37,11 @@ public class StructureGeneration : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        InitializeVariables();
+    }
+
     /// <summary>
     /// Function to begin the generation of structures and paths depending on settings selected by user
     /// </summary>
@@ -336,3 +341,26 @@ public class StructureGeneration : MonoBehaviour
         return pattern;
     }
 }
+
+/*
+#if UNITY_EDITOR
+[CustomEditor(typeof(StructureGeneration))]
+public class StructureGenerationCustomInspector : Editor
+{
+    private void OnEnable()
+    {
+    }
+
+    public override void OnInspectorGUI()
+    {
+        StructureGeneration pathfind = (StructureGeneration)target;
+        if (DrawDefaultInspector())
+        {
+            //Include Function call here to auto update values in this inspector
+
+        }
+
+    }
+}
+#endif
+*/

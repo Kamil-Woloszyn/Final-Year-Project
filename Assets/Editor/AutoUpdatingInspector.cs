@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 [CustomEditor (typeof (GenerationalValues))]
 public class AutoUpdatingInspector : Editor
 {
+    
     public override void OnInspectorGUI()
     {
         GenerationalValues mapGen = (GenerationalValues)target;
@@ -35,6 +36,7 @@ public class AutoUpdatingInspector : Editor
 
     private void AutoClearTileMap()
     {
+        /*
         //Finding the tile map in the hirerarchy
         Tilemap tileMapReference = SceneAsset.FindFirstObjectByType<Tilemap>().GetComponent<Tilemap>() as Tilemap;
         if(tileMapReference == null)
@@ -58,8 +60,9 @@ public class AutoUpdatingInspector : Editor
         //Clearing the found tilemap
         if(tileMapReference != null)
         {
-            tileMapReference.ClearAllTiles();
+            //tileMapReference.ClearAllTiles();
         }
+        */
     }
-
+    
 }
